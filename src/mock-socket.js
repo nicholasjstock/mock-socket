@@ -1,8 +1,8 @@
-var delay               = require('./helpers/delay');
-var urlTransform        = require('./helpers/url-transform');
-var socketMessageEvent  = require('./helpers/message-event');
-var globalContext       = require('./helpers/global-context');
-var webSocketProperties = require('./helpers/websocket-properties');
+import delay from './helpers/delay';
+import urlTransform from './helpers/url-transform';
+import globalContext from './helpers/global-context';
+import socketMessageEvent from './helpers/message-event';
+import webSocketProperties from './helpers/websocket-properties';
 
 function MockSocket(url) {
   this.binaryType = 'blob';
@@ -82,4 +82,4 @@ MockSocket.prototype = {
   }
 };
 
-module.exports = MockSocket;
+export default MockSocket;

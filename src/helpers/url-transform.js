@@ -91,4 +91,4 @@ function urlParse(arg, url) {
   return '';
 }
 
-module.exports = urlTransform;
+export default urlTransform;
