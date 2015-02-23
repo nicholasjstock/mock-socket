@@ -25,7 +25,7 @@ function isNumeric(arg) {
 }
 
 function urlParse(arg, url) {
-  var _ls = url || window.location.toString();
+  var _ls = url;
 
   if (!arg) { return _ls; }
   else { arg = arg.toString(); }

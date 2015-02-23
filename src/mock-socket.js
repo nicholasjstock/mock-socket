@@ -1,14 +1,13 @@
 import delay from './helpers/delay';
 import urlTransform from './helpers/url-transform';
-import globalContext from './helpers/global-context';
 import socketMessageEvent from './helpers/message-event';
 import webSocketProperties from './helpers/websocket-properties';
 
 function MockSocket(url) {
   this.binaryType = 'blob';
   this.url        = urlTransform(url);
-  this.readyState = globalContext.MockSocket.CONNECTING;
-  this.service    = globalContext.MockSocket.services[this.url];
+  this.readyState = window.MockSocket.CONNECTING;
+  this.service    = window.MockSocket.services[this.url];
 
   webSocketProperties(this);
 

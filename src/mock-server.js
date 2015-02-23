@@ -1,14 +1,13 @@
 import Service from './service';
 import delay from './helpers/delay';
 import urlTransform from './helpers/url-transform';
-import globalContext from './helpers/global-context';
 import socketMessageEvent from './helpers/message-event';
 
 function MockServer(url) {
   var service = new Service();
   this.url    = urlTransform(url);
 
-  globalContext.MockSocket.services[this.url] = service;
+  window.MockSocket.services[this.url] = service;
 
   this.service   = service;
   service.server = this;

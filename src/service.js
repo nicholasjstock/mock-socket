@@ -1,4 +1,3 @@
-import globalContext from './helpers/global-context';
 import socketMessageEvent from './helpers/message-event';
 
 function SocketService() {
@@ -20,12 +19,12 @@ SocketService.prototype = {
 
     // if the server has not been set then we notify the onclose method of this client
     if(!this.server) {
-      this.notify(client, 'updateReadyState', globalContext.MockSocket.CLOSED);
+      this.notify(client, 'updateReadyState', window.MockSocket.CLOSED);
       this.notifyOnlyFor(client, 'clientOnError');
       return false;
     }
 
-    this.notifyOnlyFor(client, 'updateReadyState', globalContext.MockSocket.OPEN);
+    this.notifyOnlyFor(client, 'updateReadyState', window.MockSocket.OPEN);
     this.notify('clientHasJoined', this.server);
     this.notifyOnlyFor(client, 'clientOnOpen', socketMessageEvent('open', null, this.server.url));
   },
@@ -37,9 +36,9 @@ SocketService.prototype = {
   * @param {messageEvent: object} the mock message event.
   */
   closeConnectionFromServer: function(messageEvent) {
-    this.notify('updateReadyState', globalContext.MockSocket.CLOSING);
+    this.notify('updateReadyState', window.MockSocket.CLOSING);
     this.notify('clientOnclose', messageEvent);
-    this.notify('updateReadyState', globalContext.MockSocket.CLOSED);
+    this.notify('updateReadyState', window.MockSocket.CLOSED);
     this.notify('clientHasLeft');
   },
 
@@ -52,9 +51,9 @@ SocketService.prototype = {
   * @param {client: object} the context of the client
   */
   closeConnectionFromClient: function(messageEvent, client) {
-    this.notifyOnlyFor(client, 'updateReadyState', globalContext.MockSocket.CLOSING);
+    this.notifyOnlyFor(client, 'updateReadyState', window.MockSocket.CLOSING);
     this.notifyOnlyFor(client, 'clientOnclose', messageEvent);
-    this.notifyOnlyFor(client, 'updateReadyState', globalContext.MockSocket.CLOSED);
+    this.notifyOnlyFor(client, 'updateReadyState', window.MockSocket.CLOSED);
     this.notify('clientHasLeft');
   },
 
