@@ -5,7 +5,13 @@ function ClientServerBinding(client, server) {
 	this.send = function(msg) {
 		delay(function() {
 			if (client.onmessage) {
-				client.onmessage(socketMessageEvent('message', msg, server.url));
+				if (msgs instanceof Array === false) {
+					msgs = [msgs];
+				}
+				for (var i = 0; i < msgs.length; i++) {
+					var msg = msgs[i];
+					client.onmessage(socketMessageEvent('message', msg, server.url));
+				}
 			}
 		}, this);
 	}
