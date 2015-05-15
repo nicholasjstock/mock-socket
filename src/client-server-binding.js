@@ -2,7 +2,7 @@ var socketMessageEvent = require('./helpers/message-event');
 var delay = require('./helpers/delay');
 
 function ClientServerBinding(client, server) {
-	this.send = function(msg) {
+	this.send = function(msgs) {
 		delay(function() {
 			if (client.onmessage) {
 				if (msgs instanceof Array === false) {
