@@ -23,7 +23,9 @@ function webSocketProperties(websocket) {
       get: function() { return this._onopen; },
       set: function(callback) {
         this._onopen = eventMessageSource(callback);
-        this.service.setCallbackObserver('clientOnOpen', this._onopen, websocket);
+        if (this.service){
+          this.service.setCallbackObserver('clientOnOpen', this._onopen, websocket);
+        }
       }
     },
     onmessage: {
@@ -31,7 +33,9 @@ function webSocketProperties(websocket) {
       get: function() { return this._onmessage; },
       set: function(callback) {
         this._onmessage = eventMessageSource(callback);
-        this.service.setCallbackObserver('clientOnMessage', this._onmessage, websocket);
+        if (this.service){
+          this.service.setCallbackObserver('clientOnMessage', this._onmessage, websocket);
+        }
       }
     },
     onclose: {
@@ -39,7 +43,9 @@ function webSocketProperties(websocket) {
       get: function() { return this._onclose; },
       set: function(callback) {
         this._onclose = eventMessageSource(callback);
-        this.service.setCallbackObserver('clientOnclose', this._onclose, websocket);
+        if (this.service){
+          this.service.setCallbackObserver('clientOnclose', this._onclose, websocket);
+        }
       }
     },
     onerror: {
@@ -47,7 +53,9 @@ function webSocketProperties(websocket) {
       get: function() { return this._onerror; },
       set: function(callback) {
         this._onerror = eventMessageSource(callback);
-        this.service.setCallbackObserver('clientOnError', this._onerror, websocket);
+        if (this.service){
+          this.service.setCallbackObserver('clientOnError', this._onerror, websocket);
+        }
       }
     }
   });

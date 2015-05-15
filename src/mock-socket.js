@@ -15,7 +15,11 @@ function MockSocket(url) {
   delay(function() {
     // Let the service know that we are both ready to change our ready state and that
     // this client is connecting to the mock server.
-    this.service.clientIsConnecting(this, this._updateReadyState);
+    if (this.service){
+      this.service.clientIsConnecting(this, this._updateReadyState);
+    }else{
+      this.readyState = globalContext.MockSocket.CLOSED;
+    }
   }, this);
 }
 
